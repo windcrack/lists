@@ -1,12 +1,13 @@
 <template lang="pug">
 	div#app
 		section.main
-			ListsLeft(
-				:lists="lists" 
-				:changerHandler="changerHandler" 
-				:visible="visible"
-			)
-			ListsRight(:lists="lists")
+			.main__body(v-for="(item, i) in newObj" :key="i")
+				ListsLeft(
+					:lists="item" 
+					:changerHandler="changerHandler" 
+					:visible="visible"
+				)
+				ListsRight(:lists="item")
 </template>
 
 <script>
@@ -19,23 +20,39 @@ export default {
 	},
 	data(){
 		return{
-			lists: [
-				{count: 10, color: '#ff0000', chek: false},
-				{count: 16, color: '#ffff00', chek: false},
-				{count: 40, color: '#008000', chek: false},
-				{count: 0, color: '#0000ff', chek: true},
-			],
+			newObj: {
+				lists: [
+					{count: 10, color: '#ff0000', chek: false},
+					{count: 16, color: '#ffff00', chek: false},
+					{count: 40, color: '#008000', chek: false},
+					{count: 0, color: '#0000ff', chek: true},
+				],
+				lists2: [
+					{count: 10, color: '#ff0000', chek: false},
+					{count: 16, color: '#ffff00', chek: false},
+					{count: 40, color: '#008000', chek: false},
+					{count: 0, color: '#0000ff', chek: true},
+				],
+				lists3: [
+					{count: 10, color: '#ff0000', chek: false},
+					{count: 16, color: '#ffff00', chek: false},
+					{count: 40, color: '#008000', chek: false},
+					{count: 0, color: '#0000ff', chek: true},
+					{count: 40, color: '#008000', chek: false},
+				],
+			},
 			visible: false,
-			aciveId: null,
 		}
 	},
 
 	methods: {
 		changerHandler(){
 			this.visible = !this.visible;
-            this.lists.forEach((element) => {
-				element.chek = !element.chek
-			});
+			for(let key in this.newObj){
+				this.newObj[key].forEach( elem =>{
+					elem.chek = !elem.chek
+				})
+			}
         }
 	},
 };
@@ -60,5 +77,6 @@ export default {
 		border: solid 1px #000
 		padding: 10px 20px
 		margin-left: 12px
-
+		&__body
+			display: flex
 </style>
