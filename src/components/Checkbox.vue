@@ -7,7 +7,7 @@
 </template>
 <script>
 export default {
-    props: ['changerHandler', 'visible']
+    props: ['changerHandler', 'visible'],
 }
 </script>
 <style lang="sass">

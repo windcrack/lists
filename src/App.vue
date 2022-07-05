@@ -4,8 +4,7 @@
 			.main__body(v-for="(item, i) in newObj" :key="i")
 				ListsLeft(
 					:lists="item" 
-					:changerHandler="changerHandler" 
-					:visible="visible"
+					:newObj="newObj"
 				)
 				ListsRight(:lists="item")
 </template>
@@ -41,19 +40,20 @@ export default {
 					{count: 40, color: '#008000', chek: false},
 				],
 			},
-			visible: false,
+			
 		}
 	},
 
 	methods: {
-		changerHandler(){
-			this.visible = !this.visible;
-			for(let key in this.newObj){
-				this.newObj[key].forEach( elem =>{
-					elem.chek = !elem.chek
-				})
-			}
-        }
+		// changerHandler(){
+		// 	this.visible = !this.visible
+		// 	for(let key in this.newObj){
+		// 		this.newObj[key].forEach( (elem, i) =>{
+		// 			console.log(i);
+		// 			elem.chek = !elem.chek
+		// 		})
+		// 	}
+        // }
 	},
 };
 </script>

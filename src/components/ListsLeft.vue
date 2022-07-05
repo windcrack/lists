@@ -7,16 +7,31 @@
 import CheckBox from './Checkbox.vue'
 import ListsItems from './ListsItems.vue'
 export default {
-    props: ['lists', 'changerHandler', 'visible'],
+    props: ['lists', 'newObj'],
     components: {
 		CheckBox, ListsItems
 	},
+
+    data(){
+        return{
+            visible: false,
+        }
+    },
     
     methods: {
         open(i){
             let change = this.lists;
             change[i].chek = !change[i].chek
         },
+        changerHandler(){
+			this.visible = !this.visible
+            console.log(this.newObj);
+			for(let key in this.newObj){
+				this.newObj[key].forEach( (elem) =>{
+					elem.chek = !elem.chek
+				})
+			}
+        }
     },
 }
 </script>
